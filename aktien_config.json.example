@@ -1,0 +1,40 @@
+{
+    "Aktien": [
+        {
+            "Ticker": "GC=F",
+            "Name": "Gold",
+            "Ziel_Preis_Hoch": 4500.0,
+            "Ziel_Preis_Tief": 3500.0,
+            "Prozent_Woche_Steigt": 5.0,
+            "Prozent_Woche_Faellt": 5.0,
+            "Aktiv": true
+        },
+        {
+            "Ticker": "NVDA",
+            "Name": "Nvidia",
+            "Ziel_Preis_Hoch": 213.0,
+            "Ziel_Preis_Tief": null,
+            "Prozent_Woche_Steigt": 15,
+            "Prozent_Woche_Faellt": 15,
+            "Aktiv": true
+        },
+        {
+            "Ticker": "GOOGL",
+            "Name": "Google",
+            "Ziel_Preis_Hoch": null,
+            "Ziel_Preis_Tief": null,
+            "Prozent_Woche_Steigt": null,
+            "Prozent_Woche_Faellt": 15,
+            "Aktiv": true
+        },
+        {
+            "Ticker": "GOOGL",
+            "Name": "Google",
+            "Ziel_Preis_Hoch": null,
+            "Ziel_Preis_Tief": null,
+            "Prozent_Woche_Steigt": 10,
+            "Prozent_Woche_Faellt": null,
+            "Aktiv": true
+        }
+    ]
+}
