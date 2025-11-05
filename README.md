@@ -2,7 +2,7 @@
 
 This python script allows to track multiple stock tickers and send you a telegram notification when a price hits a certain limit.
 
-The limits are:
+The possible limits which can be set are:
 
 - Current Price `>` Limit
 - Current Price `<` Limit
@@ -15,7 +15,6 @@ The limits are:
 In the json file the limit values are defined:
 
 ```
-
 {
     "Aktien": [
         {
