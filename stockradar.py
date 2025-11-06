@@ -50,15 +50,14 @@ def lade_konfiguration():
         print(f"Fehler: Konfigurationsdatei '{CONFIG_FILE}' ist keine gültige JSON-Datei.")
         return []
 
-def deactivate(ticker):
-    print('deactivate ticker {}'.format(ticker))
+def deactivate(index):
+    print('deactivate ticker index {} ->'.format(index))
     try:
         with open(CONFIG_FILE, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
-        for i in range(len(data['Aktien'])):
-            if data['Aktien'][i]['Ticker'] == ticker:
-                data['Aktien'][i]['Aktiv'] = False
+        print(data['Aktien'][index]['name'])
+        data['Aktien'][index]['Aktiv'] = False
 
         with open(CONFIG_FILE, 'w') as file:
             json.dump(data, file, indent=4)
@@ -123,7 +122,10 @@ def pruefe_aktien(aktien_liste):
 
 
 
-    for aktie in aktien_liste:
+    # for aktie in aktien_liste:
+    for index in range(len(aktien_liste)):
+
+        aktie = aktien_liste[index]
         ticker = aktie['Ticker']
         name = aktie['Name']
 
@@ -144,19 +146,19 @@ def pruefe_aktien(aktien_liste):
 
         if ziel_hoch is not None and aktueller_preis >= ziel_hoch:
             send_alarm(f'The stock {name} ({ticker}) is above your limit: {ziel_hoch} {währung}. Current price: {aktueller_preis} {währung}.')
-            deactivate(ticker)
+            deactivate(index)
 
         if ziel_tief is not None and aktueller_preis <= ziel_tief:
             send_alarm(f'The stock {name} ({ticker}) is below your limit: {ziel_tief} {währung}. Current price: {aktueller_preis} {währung}.')
-            deactivate(ticker)
+            deactivate(index)
 
         if prozent_plus is not None and prozent_plus < (aktueller_preis/lowest_price[ticker]-1)*100:
             send_alarm(f'The stock {name} ({ticker}) is up more than +{prozent_plus}%. Current price: {aktueller_preis} {währung}.')
-            deactivate(ticker)
+            deactivate(index)
 
         if prozent_minus is not None and prozent_minus < (1 - aktueller_preis/highest_price[ticker])*100:
             send_alarm(f'The stock {name} ({ticker}) is down more than -{prozent_minus}%. Current price: {aktueller_preis} {währung}.')
-            deactivate(ticker)
+            deactivate(index)
 
 
 if __name__ == "__main__":
